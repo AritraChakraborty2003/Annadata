@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Dashboard</title>
+   
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#" style="height: 11vmin; width:23vmin">
+          <img src="static/agro.png" alt="logo" style="max-width: 100%; max-height: 100%;object-fit: contain;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+          <form class="form-inline my-2 my-lg-0" action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" value="Logout" style="padding: 1vmin; border-radius: 2vmin;">Logout</button>
+        </form>
+        </div>
+      </nav>
+<div class="content">
+    <p class="header" style="text-align: center; margin-top: 5vmin; font-size: 10vmin;">Welcome <b>{{ request.user.username }}</b></p>
+<div class="container" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;column-gap: 3vmin;margin-top: 5vmin; width:100vw; row-gap: 3vmin;">
+        <div class="farmBox1" style="height: 55vmin; width: 50vmin;box-shadow: 1px 3px 5px 3px;">
+            <div class="header">
+                <p style="text-align: center; font-weight: bold; font-size: 3.5vmin; margin-top: 3vmin;">Farm ID: 1523</p>
+            </div>
+
+            <div style="width:100%; display: flex; justify-content: center; ">
+            <div class="imgContainer" style="width:30vmin; height:25vmin; display: flex; justify-content: center; box-shadow: 1px 3px 5px 3px;">
+                <img src="static/farm1.png" style="max-width: 100%; max-height: 100%;">
+            </div>
+            </div>
+            <div class="btnHolder" style="display: flex; justify-content: center; margin-top: 5vmin;">
+                <button class="dashBtn"><a href="farmDash" class="link1">Monitor Data</a></button>
+            </div>
+        </div>
+        <div class="farmBox2"  style="height: 55vmin; width: 50vmin; box-shadow: 1px 3px 5px 3px;">
+            <div class="header">
+                <p style="text-align: center; font-weight: bold; font-size: 3.5vmin; margin-top: 3vmin;">Farm ID: 1533</p>
+            </div>
+            <div style="width:100%; display: flex; justify-content: center; ">
+                <div class="imgContainer" style="width:30vmin; height:25vmin; display: flex; justify-content: center; box-shadow: 1px 3px 5px 3px;">
+                    <img src="static/farm2.jpeg" style="max-width: 100%; max-height: 100%;">
+                </div>
+                </div>
+                <div class="btnHolder" style="display: flex; justify-content: center; margin-top: 5vmin;">
+                    <button class="dashBtn" >Monitor Data</button>
+                </div>
+        </div>
+</div>
+<div class="container" style="display: flex; flex-wrap: wrap;justify-content: center;width:100vw; margin-top: 3vmin; ">
+     <div class="farmBox3" style="height: 55vmin; width: 50vmin; box-shadow: 1px 3px 5px 3px;">
+        <div class="header">
+            <p style="text-align: center; font-weight: bold; font-size: 3.5vmin; margin-top: 3vmin;">Farm ID: 1523</p>
+        </div>
+
+        <div style="width:100%; display: flex; justify-content: center; ">
+        <div class="imgContainer" style="width:30vmin; height:25vmin; display: flex; justify-content: center; box-shadow: 1px 3px 5px 3px;">
+            <img src="static/farm3.jpg" style="max-width: 100%; max-height: 100%;">
+        </div>
+        </div>
+        <div class="btnHolder" style="display: flex; justify-content: center; margin-top: 5vmin;">
+            <button class="dashBtn">Monitor Data</button>
+        </div>
+    </div>
+    </div>
+</div>
+ 
+</div>
+
+
+
+
+
+
+</body>
+</html>
+
+<style>
+
+    .dashBtn{
+        background-color:rgb(7, 98, 208); color: white; padding: 1vmin;
+    }
+    .dashBtn:hover{
+        background-color: white;
+        color: black;
+    }
+    .link1{
+        color:white;
+    }
+
+</style>

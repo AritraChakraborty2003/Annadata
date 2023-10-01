@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages" style="background-color: lightyellow;font-size: 3.5vmin;">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+ <div class="back" style="height: 100vh;width: 100vw;">
+
+    <div class="formClass">
+        <p style="margin-top: 9vmin; margin-left: 3vmin; color: rgb(8, 80, 195); font-size: 5vmin; font-weight: bold;">Login</p>
+
+        <form method="post" action="">
+        {% csrf_token %} 
+            <input type="text" name="uname" id="name" placeholder="Enter Name...">
+         
+            <input type="password" name="password" id="password" placeholder="Enter password...">
+            <div id="togglePassword"   style="height: 3.5vmin; width: 3.5vmin; margin-left: 7vmin;">
+                <img src="static/closedeye.png" id="eye" style="max-width: 100%; max-height: 100%;" onclick="ShowPasswordfunction()">
+            </div>
+            <p style="margin-top: 5vmin; margin-left:5vmin; font-size: 2.35vmin;"><a href="/signup">Don't have an account?</a></p>
+            <div class="btnHolder" style="display: flex; justify-content: center;">
+                
+            <button type="submit" name="submit" style="margin-top: 10vmin;">Submit</button>
+           </div>
+        
+        </form>
+    </div>
+    </div>
+    <script>
+        function ShowPasswordfunction(){
+     
+         const togglePassword = 
+         document.querySelector('#eye');
+           
+         const password = document.querySelector('#password');
+     
+         togglePassword.addEventListener('click', function (e) {
+     
+         // Toggle the type attribute
+         const type = password.getAttribute(
+             'type') === 'password' ? 'text' : 'password';
+         password.setAttribute('type', type);    
+         if (togglePassword.src.match("static/closedeye.png")) {
+                 togglePassword.src =("static/openeye.png");
+             } else {
+                 togglePassword.src ="static/closedeye.png";
+             }
+         });
+     }
+     </script>
+</body>
+</html>
+
+
+<style>
+
+    *{
+        margin:0;
+        padding: 0;
+    }
+    .back{
+        background-image: url("static/images/ayushImage.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .formClass{
+
+        height: 75vmin; width: 80vmin;
+        border-radius: 5vmin;
+        background-color: white;
+        opacity: 0.87;
+      
+    }
+    input{
+        width: 67vmin;
+        padding: 2vmin;
+        margin-top: 7vmin;
+        border-radius: 2vmin;
+        margin-left: 5vmin;
+    }
+    button{
+        padding: 2vmin;
+        border-radius:3vmin;
+        font-size: 2vmin;
+        letter-spacing: 0.45vmin;
+    }
+    button:hover{
+        background-color: rgb(20, 94, 223);
+        color: white;
+    }
+
+   .formClass{
+    border: 1px solid black;
+   }
+   .back{
+    background: url("static/agroImg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: fixed;
+   }
+</style>

@@ -1,0 +1,250 @@
+{% extends "header.html" %}
+{% block title %}Index{% endblock title %}
+{% block body %}
+
+{% if messages %}
+<ul class="messages" style="background-color: lightyellow;font-size: 3.5vmin;">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<div class="bannerContainer">
+
+
+    <div class="bannerText">
+        <p style="text-align: center; color: white; font-weight: bold; font-size: 7vmin; letter-spacing: 0.75vmin; margin-top: 3vmin;">Annadata</p>
+        <p style="text-align: center; color: white; font-weight: bold; font-size: 4vmin; letter-spacing: 0.35vmin;">  ( Revolutionizing Agriculture by IOT )  </p>
+        <div class="buttonHolder">
+            <button class="btnExplore">Explore</button>
+        </div>
+</div>
+</div>
+<div class="about" id="about">
+<div class="aboutDiv">
+    <p style="text-align: center;font-weight: bold; color: green; font-size: 9vmin;"><u>About-us</u></p>
+    <div class="AboutDivBox">
+        <div class="AbtboxImage AbtEle" style="display: flex; justify-content: center; align-items: center;">
+            <div class="imageHolder" style="height: 50vmin; width: 60vmin; ">
+                <img src="static/iot.jpg" alt="farm" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            </div>
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center;">
+        <div class="AbtTextBox AbtEle">
+           <p style="font-family: sans-serif; font-size: 3vmin;"><b>"Annadata"</b> is revolutionizing the conventional agricultural landscape through the seamless integration of <b>Internet of Things (IoT)</b>and <b>Artificial Intelligence (AI)</b>. Our platform empowers farmers with data-driven insights, <b>optimizing resource allocation</b> and enhancing crop yields. <b>Real-time monitoring of soil conditions</b>, weather patterns, and crop health enables precision agriculture, <b>minimizing waste</b> and <b>maximizing productivity</b>. <b>AI algorithms</b>analyze this data to offer personalized recommendations, fostering <b>sustainable practices</b> and minimizing environmental impact. Annadata is at the forefront of a transformative shift, where technology meets agriculture, promoting a more efficient and prosperous future for farmers and the industry as a whole.</p>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="ContBox" >
+<p style="text-align: center; margin-top: 15vmin; color: green; font-size: 7vmin; font-weight: bold;"><u>Contact-Us</u></p>
+<div class="mainContact" style="display: flex; justify-content: center; margin-top: 10vmin; border: 1px solid green;"id="contact">
+    <div style="margin-top: 10vmin;" class="left">
+    <p style="text-align: center; margin-top: 15vmin; color: green; font-size: 7vmin; font-weight: bold;  ">Don't be a stranger! Just say a Hi</p>
+    <div class="imageHolder" style="width: 100%; height: 10vmin;display: flex; justify-content: center; "><div><img src="static/smile.png" style="max-width: 100%; max-height: 100%; "></div></div>
+    </div>
+    <div class="contactBox" style="height: 100vmin; width: 210vmin; margin-top: -3vmin;">
+    <div class="contactHolder" style="background-color: green; height: 100vmin; ">  
+
+ 
+
+    <div class="contForm" style="display: flex; justify-content: center; align-items: center;">
+       
+        <div class="holderForm" style=" background-color: white; box-shadow: 7px 5px 3px 5px; border-radius: 1vmin; ">
+            <form method="post">
+                {% csrf_token %} 
+                <p style="text-align: center; margin-top: 2.5vmin; font-weight: bold; font-size: 3vmin;">Share your message...</p>
+                <input type="text" class="text" name="name" placeholder="Enter your name..." style="width: 60vmin; padding: 1vmin; margin-top: 2vmin; margin-left: 3vmin;">
+                <input type="email" class="text" name="email" placeholder="Enter your email..." style="width: 60vmin; padding: 1vmin; margin-top: 2vmin; margin-left: 3vmin;">
+                <input type="Job" class="text" name="job" placeholder="Enter your designation..." style="width: 60vmin; padding: 1vmin; margin-top: 2vmin; margin-left: 3vmin;">
+                <textarea name="message" rows="5" cols="55" placeholder="Comment text." style="margin-left: 3vmin; margin-top: 2vmin; padding: 1vmin;"></textarea>
+                <div class="btnHolder" style="margin-top: 7px;display: flex; justify-content: center;">
+                <button type="submit" id="btn1" class="btn1" name="submit" style="padding: 7px;  border-radius: 2vmin;">Submit</button>
+                </div>
+            </form>
+        </div>
+         
+    </div>
+    </div>
+    </div>
+</div>
+
+</div>
+
+<div class="footer" style="margin-top: 25vmin;">
+    <div class="FooterSection1" >
+        <div class="boxData" style="margin-top: 3vmin;">
+            <p style="color: white; font-size: 3vmin; margin-left: 3vmin; font-size:4vmin; font-weight: bold;"><span class="underline-gap">Overview Details</span></p>
+            <ul class="details" style="margin-left: 3vmin; margin-top: 1vmin; color: white; letter-spacing: 0.15vmin;">
+                <li>Company name: <b>ANNADATA</b></li>
+                <li>Owner Name: <b>Neha Chaudhury</b></li>
+                <li>Email: <b>recfmj@gmail.com</b></li>
+                <li>Phone: <b>7585824862</b></li>
+                <li>Address: <b>Innovation Cell,IIMT Group of Colleges,Greater Noida,UP</b></li>
+            
+            </ul>
+        </div>
+    </div>
+    <div class="FooterSection2" style="width:50%;border-left: 1px solid white;">
+        <div class="boxData" style="margin-top: 3vmin;">
+            <p style="color: white; font-size: 3vmin; margin-left: 3vmin; font-size: 4vmin; font-weight: bold;"><span class="underline-gap">Geolocation</span></p>
+            <p style="margin-left: 3vmin; color: white; font-size: 3vmin;">Stay in touch with us to get connected for proper geolocation refer the map below</p>
+        </div>
+        <div class="map" style="margin-left: 3vmin;">
+            <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=IIMT innovation cell&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://connectionsgame.org/">Connections Unlimited</a></div><style>.mapouter{position:relative;text-align:right;width:400px;height:100px;}.gmap_canvas {overflow:hidden;background:none!important;width:400px;height:100px;}.gmap_iframe {width:400px!important;height:100px!important;}</style></div>
+        </div>
+       
+</div>
+
+</div>
+<div class="foot" style=" width: 100vw;  padding-top:1.5vmin;  background-color: white; color: black; font-size: 2vmin; font-weight: bold; letter-spacing: 0.25vmin; margin-top: 5px;">
+   <p style="text-align: center;">@Annadata 2023</p>
+</div>
+
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    .contactBox{
+        
+        margin-top: 5vmin;
+    }
+
+    .bannerContainer{
+        width:100vw;
+        
+        display: flex;
+        
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        background-image: url("static/back.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      
+    }
+   
+    .bannerText{
+        background-color: black;
+        height: 45vmin;
+        width: 90vmin;
+        opacity: 0.7;
+        border-radius: 3vmin;
+    }
+    @media(max-width:995px){
+       
+        .bannerContainer{
+            height: 100vh;
+        }
+        .FooterSection2{
+            display: none;
+        }
+        .footer{
+        background-color: green;
+        padding-bottom: 3vmin;
+        width: 100vw;
+        display: flex;
+        
+    }
+    .details{
+        font-size: 3.75vmin;
+    }
+    .FooterSection1{
+        width: 100%;
+        letter-spacing: 1vmin;
+    }    .underline-gap {
+            border-bottom: 2px solid white; /* Adjust the border properties as needed */
+            padding-bottom: 5px; /* Adjust the padding to create the desired gap */
+            display: inline-block;
+            font-size: 5vmin; /* Make the underline only as long as the text */
+        }
+        .left{
+            display: none;
+        }
+        .holderForm{
+        height: 100vmin; width: 93vmin;
+        }
+      
+    }
+    @media(min-width:996px){
+        
+        .bannerContainer{
+            height: 100vh;
+        }
+        .footer{
+        background-color: green;
+        padding-bottom: 3vmin;
+        width: 100vw;
+        display: flex;
+        }
+        .details{
+            font-size: 3vmin;
+        }
+        .FooterSection1{
+        width: 50%;
+    }
+    .holderForm{
+        height: 63vmin; width: 70vmin;
+        }
+   
+    .underline-gap {
+            border-bottom: 2px solid white; /* Adjust the border properties as needed */
+            padding-bottom: 5px; /* Adjust the padding to create the desired gap */
+            display: inline-block; /* Make the underline only as long as the text */
+        }
+    }
+
+    
+    .btnExplore{
+        background-color: red;
+        padding: 2vmin;
+        border-radius: 3vmin;
+        color: white;
+        font-size: 2.5vmin;
+    }
+    .buttonHolder{
+        display: flex;
+        margin-top: 5vmin;
+        justify-content: center;
+       
+    }
+    .btnExplore:hover{
+        background-color: white;
+        color: black;
+    }
+    .underlineBox{
+        display: flex;
+        justify-content: center;
+    }
+    .AboutDivBox{
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .AbtEle{
+        width: 80vmin;
+    }
+    .contactHolder{
+        display: flex;
+        justify-content: center;
+    }
+    .btn1{
+        background-color: red; color: white;
+        border: 1px solid red;
+    }
+    .btn1:hover{
+        background-color: white;
+        color: black;
+    }
+  
+
+</style>
+{% endblock body %}
