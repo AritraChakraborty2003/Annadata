@@ -10,5 +10,5 @@ urlpatterns = [
     path('login',views.Login,name="login"),
     path('logout',views.logout,name="logout"),
     path('dashboard',views.dashboard,name="dashboard"),
-    path("farmDash.html",views.farmDash, name="farmDash")
+    path("farmDash",views.farmDash, name="farmDash")
 ]

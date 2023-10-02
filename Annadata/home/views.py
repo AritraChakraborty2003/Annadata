@@ -10,6 +10,9 @@ from home.models import Contact
 @login_required(login_url="login")
 def dashboard(request):
     return render(request,"dashboard.html")
+@login_required(login_url="login")
+def farmDash(request):
+    return render(request,"farmDash.html")
 def index(request):
     if request.method=="POST":
         name=request.POST.get("name")
@@ -53,6 +56,3 @@ def Login(request):
 def logout(request):
     logouts(request)
     return redirect("main")
-
-def farmDash(request):
-    return render(request,"farmDash.html")

@@ -2,10 +2,276 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FarmDash</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Farm-dashboard</title>
+   
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#" style="height: 11vmin; width:23vmin">
+          <img src="static/agro.png" alt="logo" style="max-width: 100%; max-height: 100%;object-fit: contain;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+          <form class="form-inline my-2 my-lg-0" action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" value="Logout" name="logout" style="padding: 1vmin; border-radius: 2vmin;">Logout</button>
+        </form>
+        <form class="form-inline my-2 my-lg-0" action="{% url 'dashboard' %}" method="post" style="padding-left:3vmin">
+            {% csrf_token %}
+            <button type="submit" value="back" name="back" style="padding: 1vmin; border-radius: 2vmin;">Back</button>
+        </form>
+        </div>
+      </nav>
+<div class="content">
+    <p class="header" style="text-align: center; margin-top: 1vmin; font-size: 7vmin;">Welcome <b>{{ request.user.username }}</b></p>
+    <p class="header" style="text-align: center; margin-top: 1vmin; font-size: 3vmin;">( Your want stop solution for IOT based smart agriculture please select your choice )</b></p>
+    <p class="header" style="text-align: center; margin-top: 1vmin; font-size: 3.5vmin;"><a class="farmHead" href="#farmHead">Farm Data</a> | <a class="environment" href="#environment">Environment Data</a></b></p>
+
+    <p style="font-weight:bold; font-size:5vmin; margin-left:5vmin; margin-top:5vmin">Environment Data</p>
+    <div class="container" id="environment" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;column-gap: 3vmin;margin-top: 5vmin; width:100vw; row-gap: 3vmin;">
+        <div class="farmBox1" style="height: 55vmin; width: 50vmin;box-shadow: 1px 3px 5px 3px;">
+            <div class="header">
+                <p style="text-align: center; font-weight: bold; font-size: 3.5vmin; margin-top: 3vmin; color:green;">Temperature</p>
+            </div>
+
+            <div style="width:100%; display: flex; justify-content: center; ">
+            <div class="imgContainer" style="width:17vmin; height:17vmin; display: flex; justify-content: center; box-shadow: 1px 3px 5px 3px;">
+                <img src="static/temperature.jpg" style="max-width: 100%; max-height: 100%;">
+            </div>
+            </div>
+            <div class="valHolder" style="display: flex; justify-content: center; margin-top: 5vmin;">
+                <p class="value" id="temperature" style="font-size:5vmin; font-weight:bold">22 &#8451;</p>
+            </div>
+        </div>
+        <div class="farmBox2"  style="height: 55vmin; width: 50vmin; box-shadow: 1px 3px 5px 3px;">
+            <div class="header">
+                <p style="text-align: center; font-weight: bold; font-size: 3.5vmin; margin-top: 3vmin; color:green">Humidity</p>
+            </div>
+            <div style="width:100%; display: flex; justify-content: center; ">
+                <div class="imgContainer" style="width:17vmin; height:17vmin; display: flex; justify-content: center; box-shadow: 1px 3px 5px 3px;">
+                    <img src="static/humi.png" style="max-width: 100%; max-height: 100%;">
+                </div>
+                </div>
+                <div class="valHolder" style="display: flex; justify-content: center; margin-top: 5vmin;">
+                    <p class="value" style="font-size:5vmin; font-weight:bold"><span class="humidity"  id="humidity">33%</p>
+                </div>
+        </div>
+        <div class="farmBox3" style="height: 55vmin; width: 50vmin; box-shadow: 1px 3px 5px 3px;">
+            <div class="header">
+                <p style="text-align: center; font-weight: bold; font-size: 3.5vmin; margin-top: 3vmin; color:green">Unrealised Gases</p>
+            </div>
     
+            <div style="width:100%; display: flex; justify-content: center; ">
+            <div class="imgContainer" style="width:17vmin; height:17vmin; display: flex; justify-content: center; box-shadow: 1px 3px 5px 3px;">
+                <img src="static/methane.jpg" style="max-width: 100%; max-height: 100%;">
+            </div>
+            </div>
+            <div class="btnHolder" style="display: flex; justify-content: center; margin-top: 5vmin;">
+                <p class="value" style="font-size:5vmin; font-weight:bold"><span class="humidity"  id="methane">43ppm</p>
+            </div>
+        </div>
+        
+      
+       
+</div>
+
+<p style="font-weight:bold; font-size:5vmin; margin-left:5vmin; margin-top:3vmin">Farm Data</p>
+<div class="container" id="farmHead" style="display: flex; flex-wrap: wrap;justify-content: center;width:100vw; margin-top: 3vmin; column-gap: 9vmin; row-gap:3vmin">
+    <div class="farmBox4" style="height: 55vmin; width: 50vmin; box-shadow: 1px 3px 5px 3px;">
+        <div class="header">
+            <p style="text-align: center; font-weight: bold; font-size: 3.5vmin; margin-top: 3vmin;">Moisture</p>
+        </div>
+
+        <div style="width:100%; display: flex; justify-content: center; ">
+        <div class="imgContainer" style="width:19vmin; height:18vmin; display: flex; justify-content: center; box-shadow: 1px 3px 5px 3px;">
+            <img src="static/soilmoist.jpg" style="max-width: 100%; max-height: 100%;">
+        </div>
+        </div>
+        <div class="btnHolder" style="display: flex; justify-content: center; margin-top: 5vmin;">
+            <p class="value" style="font-size:5vmin; font-weight:bold"><span class="moisture"  id="moisture">23%</p>
+        </div>
+    </div>
+    <div class="farmBox5" style="height: 55vmin; width: 50vmin; box-shadow: 1px 3px 5px 3px;">
+        <div class="header">
+            <p style="text-align: center; font-weight: bold; font-size: 3.5vmin; margin-top: 3vmin;">Water Level</p>
+        </div>
+
+        <div style="width:100%; display: flex; justify-content: center; ">
+        <div class="imgContainer" style="width:17vmin; height:17vmin; display: flex; justify-content: center; box-shadow: 1px 3px 5px 3px;">
+            <img src="static/waterlevel.png" style="max-width: 100%; max-height: 100%;">
+        </div>
+        </div>
+        <div class="btnHolder" style="display: flex; justify-content: center; margin-top: 5vmin;">
+            <p class="value" style="font-size:5vmin; font-weight:bold"><span class="waterLevel"  id="waterLevel">23%</p>
+        </div>
+    </div>
+
+    <div class="farmBox6" style="height: 55vmin; width: 50vmin; box-shadow: 1px 3px 5px 3px;">
+        <div class="header">
+            <p style="text-align: center; font-weight: bold; font-size: 3.5vmin; margin-top: 3vmin; color:green">PH</p>
+        </div>
+
+        <div style="width:100%; display: flex; justify-content: center; ">
+        <div class="imgContainer" style="width:17vmin; height:17vmin; display: flex; justify-content: center; box-shadow: 1px 3px 5px 3px;">
+            <img src="static/ph.png" style="max-width: 100%; max-height: 100%;">
+        </div>
+        </div>
+        <div class="btnHolder" style="display: flex; justify-content: center; margin-top: 5vmin;">
+            <p class="value" style="font-size:3.5vmin; font-weight:bold"><span class="NPK"  id="NPK">Yet to be updated</p>
+        </div>
+    </div>
+    <div class="farmBox5" style="height: 55vmin; width: 50vmin; box-shadow: 1px 3px 5px 3px;">
+        <div class="header">
+            <p style="text-align: center; font-weight: bold; font-size: 3.5vmin; margin-top: 3vmin; color:green">Pump (0 is OFF and 1 is ON) </p>
+        </div>
+
+        <div style="width:100%; display: flex; justify-content: center; ">
+        <div class="imgContainer" style="width:17vmin; height:17vmin; display: flex; justify-content: center; box-shadow: 1px 3px 5px 3px;">
+            <img src="static/pump.png" style="max-width: 100%; max-height: 100%;">
+        </div>
+        </div>
+        <div class="btnHolder" style="display: flex; justify-content: center; margin-top: 5vmin;">
+            <p class="value" style="font-size:3.5vmin; font-weight:bold"><span class="pump"  id="pump">0</p>
+        </div>
+    </div>
+
+
+    <div class="farmBox5" style="height: 55vmin; width: 50vmin; box-shadow: 1px 3px 5px 3px;">
+        <div class="header">
+            <p style="text-align: center; font-weight: bold; font-size: 3.5vmin; margin-top: 3vmin;color:green">NPK</p>
+        </div>
+
+        <div style="width:100%; display: flex; justify-content: center; ">
+        <div class="imgContainer" style="width:17vmin; height:17vmin; display: flex; justify-content: center; box-shadow: 1px 3px 5px 3px;">
+            <img src="static/npk.png" style="max-width: 100%; max-height: 100%;">
+        </div>
+        </div>
+        <div class="btnHolder" style="display: flex; justify-content: center; margin-top: 5vmin;">
+            <p class="value" style="font-size:3.5vmin; font-weight:bold"><span class="NPK"  id="NPK">Yet to be updated</p>
+        </div>
+    </div>
+    <div class="farmBox5" style="height: 55vmin; width: 50vmin; box-shadow: 1px 3px 5px 3px;">
+        <div class="header">
+            <p style="text-align: center; font-weight: bold; font-size: 3.5vmin; margin-top: 3vmin; color:green">Intruder</p>
+        </div>
+
+        <div style="width:100%; display: flex; justify-content: center; ">
+        <div class="imgContainer" style="width:17vmin; height:17vmin; display: flex; justify-content: center; box-shadow: 1px 3px 5px 3px;">
+            <img src="static/intruder.webp" style="max-width: 100%; max-height: 100%;">
+        </div>
+        </div>
+        <div class="btnHolder" style="display: flex; justify-content: center; margin-top: 5vmin;">
+            <p class="value" style="font-size:5vmin; font-weight:bold"><span class="intruder"  id="intruder">1</p>
+        </div>
+    </div>
+    </div>
+    
+</div>
+ 
+</div>
+
+ 
+
+  <!-- the scripts for products you want to access must be added-->
+
+	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+
+	<script type="module">
+	  // Import the functions you need from the SDKs you need
+	  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+	  // TODO: Add SDKs for Firebase products that you want to use
+	  // https://firebase.google.com/docs/web/setup#available-libraries
+
+	  // Your web app's Firebase configuration here (Do not use the existing configuration)
+    const firebaseConfig = {
+      apiKey: "AIzaSyAI1QyPib3N2Ya-wo_OyFHoLAlZ7OytCio",
+      authDomain: "mainagro-7e5cc.firebaseapp.com",
+      databaseURL: "https://mainagro-7e5cc-default-rtdb.firebaseio.com",
+      projectId: "mainagro-7e5cc",
+      storageBucket: "mainagro-7e5cc.appspot.com",
+      messagingSenderId: "822625428809",
+      appId: "1:822625428809:web:2b4477caf3db907b732698",
+      measurementId: "G-EKW68NXHZE"
+    };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+
+
+	  // getting reference to the database
+	  var database = firebase.database();
+
+	  //getting reference to the data we want
+	  var dataRef1 = database.ref('DHT/humidity');
+	  var dataRef2 = database.ref('DHT/temperature');
+      var dataRef3 = database.ref('DHT/moisture');
+      var dataRef4 = database.ref('DHT/methane');
+      var dataRef5 = database.ref('DHT/waterlevel');
+      var dataRef6 = database.ref('DHT/intruder');
+  
+	  //fetch the data
+	  dataRef1.on('value', function(getdata1){
+	  	var humi = getdata1.val();
+	  	document.getElementById('humidity').innerHTML = humi + "%";
+	  })
+
+	   dataRef2.on('value', function(getdata2){
+	  	var temp = getdata2.val();
+	  	document.getElementById('temperature').innerHTML = temp + "&#8451;";
+	  })
+      
+    dataRef3.on('value', function(getdata3){
+        var moist = getdata3.val();
+        document.getElementById('moisture').innerHTML = moist + "%";
+    })
+
+    dataRef4.on('value', function(getdata4){
+	  	var meth = getdata4.val();
+	  	document.getElementById('methane').innerHTML = meth/10 + "ppm";
+	  })
+      //document.getElementById('waterLevel').innerHTML = 13 + "cm";
+      dataRef5.on('value', function(getdata5){
+        var level1 = getdata5.val();
+        document.getElementById('waterLevel').innerHTML = level1 + " cm";
+    })
+    dataRef6.on('value', function(getdata6){
+        var intr = getdata6.val();
+        document.getElementById('intruder').innerHTML = intr;
+    })
+
+
+
+
+	</script>
+
+
 </body>
 </html>
+
+<style>
+
+    .dashBtn{
+        background-color:rgb(7, 98, 208); color: white; padding: 1vmin;
+    }
+    .dashBtn:hover{
+        background-color: white;
+        color: black;
+    }
+    .link1{
+        color:white;
+    }
+
+</style>
